@@ -22,6 +22,7 @@ def index(request):
 			print(formset)
 			formset.save()
 			data = request.POST.copy()
+			print(data)
 			return render(request, 'assessment.html', {'data': data})
 	else:
 		formset = crowdSourceForm()
