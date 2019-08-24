@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h1> Crowdsource Insurance </h1>
+	<p> </p>
+	<form method="post">
+	    {% csrf_token %}
+		{{ formset }}
+		<input type ="submit" value = "Let's go!" />
+	</form>
+	<p> </p>
+
+{% endblock %}
