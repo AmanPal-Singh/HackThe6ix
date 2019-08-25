@@ -12,16 +12,22 @@ data = 0
 
 def index(request):
 	""" View function for home page of site """
-	#crowdSourceForm = modelformset_factory(Address, fields=('address', 'insurance_value'))
 	form = insuranceForm(request.POST)
 	if request.method == 'POST':
-		#formset = crowdSourceForm(request.POST, request.FILES)
 		if form.is_valid():
 			data = request.POST.copy()
-			print(data)
-			return render(request, 'assessment.html', {'data': data})
+			address = request.POST.get('address')
+			insurance_value = request.POST.get('insurance_value')
+			print(address)
+			print(insurance_value)
+			
+			return render(request, 'assessment.html', {'data': data, 'form': form, 'address': address, 'insurance_value': insurance_value})
 	else:
 		form = insuranceForm()
-		#formset = crowdSourceForm()
 
-	return render(request, 'index.html', {'form': form})
+	return render(request, 'assessment.html', {'form': form})
+
+def about(request):
+	""" View function for about page """
+	return render(request, 'about.html')
+
